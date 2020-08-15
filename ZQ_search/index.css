@@ -1,0 +1,84 @@
+body{
+    margin: 0;
+    background-color: #eeeeee;
+}
+
+a{
+    text-decoration: none;
+}
+
+.wrap{
+    display: flex;
+    width: 100%;
+    margin-top: 10%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.random-wiki{
+    font-size: 30px;
+    color: #353535;
+}
+
+.keyword{
+    height: 60px;
+    width: 600px;
+    margin: 10px;
+}
+
+.search-ico{
+    width: 20px;
+    height: 20px;
+    margin-top: 30px;
+}
+
+.clear-ico{
+    display: none;
+    width: 20px;
+    margin-top: 30px;
+}
+
+.intro-first{
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.intro-later{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.intro-first,.intro-later,.result{
+    font-family: 'Raleway', sans-serif;
+}
+
+.result-ul{
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.result-li{
+    list-style: none;
+    background-color: rgba(141, 236, 238, 0.27);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.result-h3{
+    color: rgba(255, 134, 111, 0.78);
+    text-align: center;
+}
+
+.result-abs{
+    color: rgba(28, 143, 255, 0.78);
+    font-size: 1.2em;
+    word-break: break-all;
+}
+
+.result-time{
+    color: rgba(255, 150, 105, 0.78);
+    text-align: right;
+}

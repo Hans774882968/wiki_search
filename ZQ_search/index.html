@@ -1,0 +1,31 @@
+﻿<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>wiki生成</title>
+    <link rel="stylesheet" type="text/css" href = "index.css" />
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class = "wrap">
+        <a class = "random-wiki" href = "https://en.wikipedia.org/wiki/Special:Random" target = "_blank">
+            Click here for a random article
+        </a>
+        <div class="search">
+            <input class="keyword" type="text" placeholder="请输入想生成的维基百科" id="input">
+            <a href="#" class="search-a">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596082756512&di=df3361162965f4ae3bbd4be4d3a4c97d&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic3%2Fcover%2F03%2F05%2F85%2F5b29936216a36_610.jpg" class="search-ico" alt="search" />
+            </a>
+            <a href="#" class="search-clear">
+                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2790296620,3678494228&fm=26&gp=0.jpg" class="clear-ico" alt="cancel" />
+            </a>
+        </div>
+        <p class="intro-first">点击搜索图标搜索</p>
+        <p class="intro-later">点击取消图标取消</p>
+        <p class="intro-later">按回车键快捷搜索</p>
+        <div class="result">
+            <p class="result-title">We will show your search results here.</p>
+            <ul class="result-ul"></ul>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
