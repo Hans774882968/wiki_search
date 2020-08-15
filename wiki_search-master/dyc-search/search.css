@@ -1,0 +1,39 @@
+body{
+    background-color:#7988cb;
+}
+.text{
+    text-align: center;
+    margin-top:20px;
+}
+#wiki{
+    color:yellow;
+    margin:0;
+    padding:0;
+}
+.text{
+    position: relative;
+    text-align:center;
+    font-size:1.5em;
+}
+a:link{
+    text-decoration: none;
+    color:black;
+}
+a:hover{
+    color:blue;
+}
+.searchtext{
+    height:25px;
+    width: 50%;
+    border-radius: 15px;
+    font-size:1.1em;
+}
+.bt{
+    border-radius: 10px;
+    font-size:0.9em;
+    background-color: rgb(92, 195, 221);
+}
+#caculator{
+    text-align: center;
+    margin-top: 50px;
+}
