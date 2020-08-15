@@ -1,0 +1,57 @@
+/*用外部和内部（padding）同时控制位置，和只用margin控制位置，效果一样*/
+/*但是这2个操作都决定了内部按钮的大小，使内部按钮不能自由调整（可能是display:grid;的原因？）*/
+.calculator-wrap{
+    padding-left: 30%;
+    margin: 10% 30% 0 0;
+}
+
+.calculator-title{
+    text-align: center;
+}
+
+.calculator{
+    padding: 10px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);/*水平阴影的位置，垂直阴影的位置，模糊距离，阴影的尺寸*/
+}
+
+.display{
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.out{
+    display: grid;
+    grid-template-columns: 10% 90%;
+}
+
+.inp p,.out p{
+    padding: 0 10px;
+    margin: 0;
+    text-align: right;
+}
+
+.out p{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+#buttons{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.digit-button,.other-button{
+    text-align: center;
+    padding: 8% 0;
+    border: 1px solid #ebebeb;
+    cursor: pointer;
+}
+
+.other-button{
+    color: #f60;
+    background-color: #f9f9f9;
+}
+
+.digit-button:active,.other-button:active{
+    background-color: #f2f2f2;
+}
