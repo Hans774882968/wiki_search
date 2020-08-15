@@ -1,0 +1,45 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-08-08 18:49:21
+ * @LastEditTime: 2020-08-10 20:06:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \code\freecodecamp_study\code2\index.html
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            Wikipedia Viewer
+        </header>
+        <div class="left-get">
+            <div class="Random-get">
+                <img src="./src/random.png" class="random-img" />
+                <a
+                    href="https://en.wikipedia.org/wiki/Special:Random"
+                    target="_blank"
+                >
+                    <button class="random-get-url">
+                        生成
+                    </button>
+                </a>
+            </div>
+            <div class="Search-get">
+                <input class="search-info" />
+                <button class="search-get-url">确定</button>
+            </div>
+        </div>
+        <div class="right-show">
+            <p class="right-show-title">Show Your Search Results</p>
+        </div>
+        <footer></footer>
+        <script type="text/javascript" src="./main.js"></script>
+    </body>
+</html>

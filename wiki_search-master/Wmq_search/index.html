@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wiki Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #eeeeee;
+        }
+
+        .title {
+            font-size: 40px;
+            position: absolute;
+            color: dodgerblue;
+        }
+
+        .main {
+            display: flex;
+            width: 100%;
+            margin: auto;
+            top: 45%;
+            position: absolute;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /*正常的未被访问过的链接*/
+        a:link {
+            text-decoration: none;
+        }
+
+        /*已经访问过的链接*/
+        a:visited {
+            text-decoration: none;
+        }
+
+        /*鼠标划过(停留)的链接*/
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* 正在点击的链接*/
+        a:active {
+            text-decoration: none;
+        }
+
+        .randomWiki {
+            font-size: 30px;
+            color: #353535;
+        }
+
+        .ico{
+            display: flex;
+            flex-direction: row;
+            width: 100px;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+        .search-ico {
+            width: 20px;
+            height: 20px;
+        }
+
+        .search-clear {
+            position: relative;
+            /*margin-left: 0em;*/
+            /*bottom: -4px;*/
+        }
+
+        .clear-ico {
+            display: none;
+            width: 20px;
+        }
+
+        .searching {
+            position: relative;
+            /*display: none;*/
+            margin-left: 10%;
+            margin-right: 10%;
+            width: 80%;
+        }
+        .introduction_cancel{
+            display: none;
+        }
+        .search-li {
+            list-style: none;
+            background-color: rgba(141, 236, 238, 0.27);
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-left: solid 5px #eeeeee;
+            border-radius: 10px;
+        }
+
+        .search-h3 {
+            color: rgba(255, 134, 111, 0.78);
+        }
+
+        .search-abs {
+            color: rgba(28, 143, 255, 0.78);
+            font-size: 1.2em;
+        }
+
+        .search-time {
+            color: rgba(255, 150, 105, 0.78);
+        }
+
+        .search-link:link {
+            text-decoration: none;
+        }
+
+        .search-link:visited {
+            text-decoration: none;
+        }
+
+        .search-link:hover {
+            text-decoration: none;
+
+        }
+
+        .search-link:active {
+            text-decoration: none;
+        }
+
+        .search-li:hover {
+            border-left: solid 5px #f0a986;
+            height: 120px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="title">Wiki</div>
+<div class="main">
+    <a class="randomWiki" target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">Random wiki!</a>
+    <div class="ico">
+        <a href="#" class="search-img-a"><img
+            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596082756512&di=df3361162965f4ae3bbd4be4d3a4c97d&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic3%2Fcover%2F03%2F05%2F85%2F5b29936216a36_610.jpg"
+            class="search-ico" alt="search"></a>
+        <a href="#" class="search-clear"><img
+                src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2790296620,3678494228&fm=26&gp=0.jpg"
+                class="clear-ico" alt="cancel"></a>
+    </div>
+
+    <input type="text" name="search-title" class="search-title">
+    <div class="introduction">点击搜索图标进行搜索</div>
+    <div class="introduction_cancel">点击取消图标取消</div>
+
+
+    <div class="searching">
+        <ul class="search-ul">
+
+        </ul>
+    </div>
+</div>
+
+<script src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js'></script>
+<script>
+    $(document).ready(function () {
+
+        $(".search-ico").on("click", function () {
+            console.log(1);
+            var keyword = $(".search-title").val();
+            console.log(keyword);
+            if (keyword.length != 0) {
+                getFromWiki(keyword);
+                $(".main").animate({top: '10%'}, 500);
+                $(".clear-ico").fadeIn(150);
+                $(".introduction_cancel").fadeIn(150);
+            } else alert(
+                "你还没有输入"
+            )
+
+        })
+
+        $(".clear-ico").on("click", function () {
+            console.log(2);
+            $(".search-title").val("");
+            $(".search-ul").html("");
+            $(".main").animate({top: '45%'}, 500);
+            $(".clear-ico").fadeOut(150);
+            $(".introduction_cancel").fadeOut(150);
+
+        })
+
+        var getFromWiki = function (keyword) {
+            $.ajax({
+                url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + keyword + "&prop=info&inprop=url&utf8=&format=json",
+                dataType: "jsonp",
+                success: function (response) {
+                    console.log(response.query.search[1])
+                    showResults(response, keyword);
+                },
+                error: function () {
+                    alert("Sorry,there's something wrong within the search,please refresh this page and try again!");
+                }
+            });
+        }
+
+        var showResults = function (response, keyword) {
+            console.log("show")
+            $(".search-ul").html("");
+            if (response.query.search.length == 0) {
+                //没搜到
+                console.log("show1")
+                var str = '<a class="search-link" href="#">';
+                str += '<li class="search-li"><h3 class="search-h3">^_^</h3>';
+                str += '<p class="search-abs">Sorry,the word "' + keyword + '" is not existed in wiki\'s database</p></li></a>';
+                var dot = $(str);
+                $(".search-ul").append(dot);
+                return;
+            }
+
+            for (var i = 0; i < response.query.search.length; i++) {
+                console.log(2)
+                var str = '<a class="search-link" href="https://en.wikipedia.org/wiki/' + response.query.search[i].title + '" target="_blank">';
+                str += '<li class="search-li"><h3 class="search-h3">' + response.query.search[i].title + '</h3>';
+                str += '<p class="search-abs">' + response.query.search[i].snippet + '</p>';
+                str += '<p class="search-time">' + response.query.search[i].timestamp + '</p></li></a>';
+                var dot = $(str);
+                $(".search-ul").append(dot);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
